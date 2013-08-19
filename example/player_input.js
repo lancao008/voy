@@ -10,11 +10,13 @@ PlayerInput.prototype.initialize = function() {
 };
 
 PlayerInput.prototype.update = function() {
-  var direction = Voy.Vector2.zero();
-  if(this.keyboard.keysPressed.right) direction[0] = 1;
-  else if(this.keyboard.keysPressed.left) direction[0] = -1;
-  if(this.keyboard.keysPressed.up) direction[1] = -1;
-  else if(this.keyboard.keysPressed.down) direction[1] = 1;
+  var force = Voy.Vector2.zero();
+  if(this.keyboard.keysPressed.right) force[0] = 1;
+  else if(this.keyboard.keysPressed.left) force[0] = -1;
+  if(this.keyboard.keysPressed.up) force[1] = -1;
+  else if(this.keyboard.keysPressed.down) force[1] = 1;
 
-  this.rigidBody.velocity = direction;
+  force.multiply(this.rigidBody.maxForce);
+
+  this.rigidBody.force.add(force);
 };
