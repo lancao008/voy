@@ -20,6 +20,11 @@ Voy.Canvas.prototype.drawCircle = function(position, radius, color) {
   this.context.fill();
 };
 
+Voy.Canvas.prototype.drawRectangle = function(position, size, color) {
+  if(color) this.context.fillStyle = color;
+  this.context.fillRect(position[0]-size[0]/2, position[1]-size[1]/2, size[0], size[1]);
+};
+
 Voy.Canvas.prototype.clear = function(color) {
   this.context.fillStyle = color;
   this.context.fillRect(0, 0, this.element.width, this.element.height);

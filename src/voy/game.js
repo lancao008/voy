@@ -4,7 +4,7 @@ Voy.Game = function() {
   this.renderer = new Voy.Renderer();
 
   this.physics = new Voy.PhysicsEngine(
-    new Voy.ComponentFeeder(this.componentRegistry, 'rigidBody')
+    new Voy.ComponentFeeder(this.componentRegistry, 'rigidBody', 'collider')
   );
 
   Voy.Keyboard.initialize();
@@ -18,7 +18,10 @@ Voy.Game.prototype.run = function() {
   this.tick();
 };
 
+window.q = 0;
+
 Voy.Game.prototype.tick = function(timestamp) {
+  
   var timeDelta = this.lastTickAt ? timestamp - this.lastTickAt : 0;
   this.update(timeDelta);
   this.lastTickAt = timestamp;

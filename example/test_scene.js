@@ -1,8 +1,12 @@
 function TestScene(componentRegistry) {
   Voy.Scene.call(this, componentRegistry);
 
-  var player = EntityFactory.createPlayer();
-  this.addChild(player);
+  this.addChild(EntityFactory.createPlayer());
+  this.addChild(EntityFactory.createZombie());
+  this.addChild(EntityFactory.createZombie());
+  this.addChild(EntityFactory.createZombie());
+  this.addChild(EntityFactory.createZombie());
+  this.addChild(EntityFactory.createZombie());
 
   this.clearColor = 'rgb(200, 200, 200)';
 }

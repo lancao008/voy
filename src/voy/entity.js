@@ -6,14 +6,19 @@ Voy.Entity = function() {
   this.components = Array.prototype.slice.call(arguments);
   this.components.forEach(function(component) {
     component.entity = this;
-    component.initialize();
   }.bind(this));
 };
 
 Voy.Entity.prototype = Object.create(Voy.EntityContainer.prototype);
 
-Voy.Entity.addComponent = function(component) {
-  this.components.push(component);
+Voy.Entity.prototype.initialize = function() {
+  this.components.forEach(function(component) {
+    component.initialize();
+  });
+};
+
+Voy.Entity.prototype.getWorldPosition = function() {
+  return Voy.Vector2.add(this.parent.getWorldPosition(), this.position);
 };
 
 Voy.Entity.prototype.getComponent = function(type) {

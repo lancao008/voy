@@ -8,6 +8,11 @@ Voy.Vector2.prototype.add = function(vector) {
   this.set(result);
 };
 
+Voy.Vector2.prototype.subtract = function(vector) {
+  var result = Voy.Vector2.subtract(this, vector);
+  this.set(result);
+};
+
 Voy.Vector2.prototype.multiply = function(factor) {
   var result = Voy.Vector2.multiply(this, factor);
   this.set(result);
@@ -44,6 +49,14 @@ Voy.Vector2.add = function(vector1, vector2) {
   var result = new Voy.Vector2(
     vector1[0] + vector2[0],
     vector1[1] + vector2[1]
+  );
+  return result;
+};
+
+Voy.Vector2.subtract = function(vector1, vector2) {
+  var result = new Voy.Vector2(
+    vector1[0] - vector2[0],
+    vector1[1] - vector2[1]
   );
   return result;
 };
