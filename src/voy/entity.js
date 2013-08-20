@@ -5,7 +5,7 @@ Voy.Entity = function() {
 
   this.components = Array.prototype.slice.call(arguments);
   this.components.forEach(function(component) {
-    component.entity = this;
+    this.addComponent(component);
   }.bind(this));
 };
 
@@ -17,17 +17,14 @@ Voy.Entity.prototype.initialize = function() {
   });
 };
 
+Voy.Entity.prototype.addComponent = function(component) {
+  if(this[component.type]) throw new Error('Already got a component of type "' + type + '".');
+  this[component.type] = component;
+  component.entity = this;
+}
+
 Voy.Entity.prototype.getWorldPosition = function() {
   return Voy.Vector2.add(this.parent.getWorldPosition(), this.position);
-};
-
-Voy.Entity.prototype.getComponent = function(type) {
-  var component;
-  for(var i=0; this.components.length>i; i++) {
-    component = this.components[i];
-    if(component.type == type) return component;
-  }
-  throw new Error("Could not find component (" + type + ").");
 };
 
 Voy.Entity.prototype.update = function(timeDelta) {

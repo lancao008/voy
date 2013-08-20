@@ -6,7 +6,7 @@ function PlayerInput() {
 PlayerInput.prototype = Object.create(Voy.Component.prototype);
 
 PlayerInput.prototype.initialize = function() {
-  this.rigidBody = this.entity.getComponent('rigidBody');
+  this.rigidBody = this.entity.rigidBody;
 };
 
 PlayerInput.prototype.update = function() {

@@ -19,7 +19,7 @@ Voy.CollisionDetector.prototype.reset = function() {
 };
 
 Voy.CollisionDetector.prototype.registerCollision = function(collider1, collider2) {
-  var collision = new Voy.Collision(collider1, collider2);
+  var collision = new Voy.Collision(collider1.entity, collider2.entity);
   this.collisions.push(collision);
 };
 
