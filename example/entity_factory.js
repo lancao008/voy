@@ -7,7 +7,7 @@ EntityFactory = {
       new Voy.RigidBody(),
       a,
       new PlayerInput(),
-      new PlayerLayer()
+      new Voy.RectangleLayer('green', new Voy.Vector2(50, 50))
     );
     player.position = new Voy.Vector2(151, 290);
     return player;
@@ -19,9 +19,21 @@ EntityFactory = {
     var zombie = new Voy.Entity(
       new Voy.RigidBody(),
       a,
-      new ZombieLayer()
+      new Voy.RectangleLayer('red', new Voy.Vector2(50, 50))
     );
     zombie.position = new Voy.Vector2(x, 300);
     return zombie;
+  },
+  createWall: function(x, y) {
+    var a = new Voy.RectangleCollider();
+    a.name = 'wall collider' + x;
+
+    var wall = new Voy.Entity(
+      new Voy.RigidBody({ static: true }),
+      a,
+      new Voy.RectangleLayer('grey', new Voy.Vector2(50, 50))
+    );
+    wall.position = new Voy.Vector2(x, y);
+    return wall;
   }
 };

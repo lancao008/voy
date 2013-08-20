@@ -23,3 +23,7 @@ Voy.Collider.prototype.getVelocity = function() {
 Voy.Collider.prototype.getBounciness = function() {
   return this.rigidBody.bounciness;
 };
+
+Voy.Collider.prototype.isStatic = function() {
+  return this.rigidBody.static;
+};

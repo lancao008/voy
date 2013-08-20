@@ -1,5 +1,6 @@
-Voy.RigidBody = function() {
+Voy.RigidBody = function(options) {
   Voy.Component.call(this, 'rigidBody');
+  this.static = options && options.static || false;
   this.force = Voy.Vector2.zero();
   this.velocity = Voy.Vector2.zero();
   this.drag = 0.1;
