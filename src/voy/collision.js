@@ -3,6 +3,15 @@ Voy.Collision = function(entity0, entity1) {
   this[1] = entity1;
 };
 
+Voy.Collision.prototype.isPhysical = function() {
+  return !!this[0].rigidBody && !!this[1].rigidBody;
+};
+
+Voy.Collision.prototype.notify = function() {
+  this[0].notify('collided', this);
+  this[1].notify('collided', this);
+};
+
 Voy.Collision.prototype.resolve = function() {
   var centerDifference = Voy.Vector2.subtract(this[0].getWorldPosition(), this[1].getWorldPosition());
   var axis = Math.abs(centerDifference[0]) > Math.abs(centerDifference[1]) ? 0 : 1;

@@ -35,5 +35,14 @@ EntityFactory = {
     );
     wall.position = new Voy.Vector2(x, y);
     return wall;
+  },
+  createHotzone: function(x, y) {
+    var hotzone = new Voy.Entity(
+      new Voy.RectangleCollider(),
+      new CollisionSnitch(),
+      new Voy.RectangleLayer('pink', new Voy.Vector2(50, 50))
+    );
+    hotzone.position = new Voy.Vector2(x, y);
+    return hotzone;
   }
 };

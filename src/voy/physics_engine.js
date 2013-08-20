@@ -48,6 +48,7 @@ Voy.PhysicsEngine.prototype.simulate = function(timeDelta) {
 Voy.PhysicsEngine.prototype.handleCollisions = function() {
   this.collisionDetector.update(this.colliders);
   this.collisionDetector.collisions.forEach(function(collision) {
-    collision.resolve();
+    if(collision.isPhysical()) collision.resolve();
+    collision.notify();
   });
 };
