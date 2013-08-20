@@ -19,3 +19,7 @@ Voy.Collider.prototype.getPosition = function() {
 Voy.Collider.prototype.getVelocity = function() {
   return this.rigidBody.velocity;
 };
+
+Voy.Collider.prototype.getBounciness = function() {
+  return this.rigidBody.bounciness;
+};

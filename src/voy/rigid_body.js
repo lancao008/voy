@@ -5,6 +5,7 @@ Voy.RigidBody = function() {
   this.drag = 0.1;
   this.maxSpeed = 0.3;
   this.maxForce = 4;
+  this.bounciness = 0.1;
 };
 
 Voy.RigidBody.prototype = Object.create(Voy.Component.prototype);

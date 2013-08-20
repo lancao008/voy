@@ -11,9 +11,10 @@ Voy.Collision.prototype.resolve = function() {
   var translation = Voy.Vector2.zero();
   translation[axis] = force*direction/2;
 
+  var bounciness = Math.min(this[0].getBounciness(), this[1].getBounciness());
   this[0].getPosition().add(translation);
-  this[0].getVelocity()[axis] = 0;
+  this[0].getVelocity()[axis] = direction*bounciness;
 
   this[1].getPosition().subtract(translation);
-  this[1].getVelocity()[axis] = 0;
+  this[1].getVelocity()[axis] = direction*-1*bounciness;
 };

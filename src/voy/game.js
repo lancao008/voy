@@ -18,10 +18,7 @@ Voy.Game.prototype.run = function() {
   this.tick();
 };
 
-window.q = 0;
-
 Voy.Game.prototype.tick = function(timestamp) {
-  
   var timeDelta = this.lastTickAt ? timestamp - this.lastTickAt : 0;
   this.update(timeDelta);
   this.lastTickAt = timestamp;

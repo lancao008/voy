@@ -9,16 +9,19 @@ EntityFactory = {
       new PlayerInput(),
       new PlayerLayer()
     );
-    player.position = new Voy.Vector2(250, 190);
+    player.position = new Voy.Vector2(151, 290);
     return player;
   },
-  createZombie: function() {
+  createZombie: function(x) {
+    var a = new Voy.RectangleCollider();
+    a.name = 'zombie collider' + x;
+
     var zombie = new Voy.Entity(
       new Voy.RigidBody(),
-      new Voy.RectangleCollider(),
+      a,
       new ZombieLayer()
     );
-    zombie.position = new Voy.Vector2(100+300*Math.random(), 300);
+    zombie.position = new Voy.Vector2(x, 300);
     return zombie;
   }
 };
