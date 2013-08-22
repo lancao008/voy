@@ -1,16 +1,16 @@
 EntityFactory = {
   createPlayer: function() {
     var radius = 25;
-    var a = new Voy.RectangleCollider(radius);
+    var a = new Voy.CircleCollider(radius);
     a.name = 'player collider';
 
     var player = new Voy.Entity(
       new Voy.RigidBody(),
       a,
       new PlayerInput(),
-      new Voy.RectangleLayer('green', new Voy.Vector2(50, 50))
+      new Voy.CircleLayer('green', radius)
     );
-    player.position = new Voy.Vector2(180, 350);
+    player.position = new Voy.Vector2(400, 325);
     return player;
   },
   createPond: function() {
@@ -19,11 +19,12 @@ EntityFactory = {
     a.name = 'pond collider';
 
     var pond = new Voy.Entity(
+      new Voy.RigidBody(),
       a,
       new CollisionSnitch(),
       new Voy.CircleLayer('blue', radius)
     );
-    pond.position = new Voy.Vector2(420, 200);
+    pond.position = new Voy.Vector2(400, 200);
     return pond;
   },
   createZombie: function(x) {

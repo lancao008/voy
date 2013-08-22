@@ -33,7 +33,9 @@ Voy.CollisionDetector.prototype.pairAlreadyTested = function(collider1, collider
 };
 
 Voy.CollisionDetector.test = function(collider1, collider2) {
-  // TODO: Change implementation so that we don't have to calculate all axes up front?
+  // Todo: do aabb testing first?
+  if(collider1 instanceof Voy.CircleCollider && collider2 instanceof Voy.CircleCollider) return this.testCircle(collider1, collider2);
+
   var axes = this.getNormals(collider1, collider2);
   var axis, projection1, projection2;
   var smallestOverlap, overlap, smallestOverlapAxis;
@@ -60,6 +62,16 @@ Voy.CollisionDetector.test = function(collider1, collider2) {
 
   var collision = new Voy.Collision(collider1.entity, collider2.entity, separation);
   return collision;
+};
+
+Voy.CollisionDetector.testCircle = function(circle1, circle2) {
+  var centerDifference = Voy.Vector2.subtract(circle1.getPosition(), circle2.getPosition());
+  var centerDifferenceLength = centerDifference.getLength();
+  if(centerDifferenceLength < circle1.radius+circle2.radius) {
+    var separation = Voy.Vector2.multiply(Voy.Vector2.normalize(centerDifference), circle1.radius+circle2.radius-centerDifferenceLength);
+    var collision = new Voy.Collision(circle1.entity, circle2.entity, separation);
+    return collision;
+  }
 };
 
 Voy.CollisionDetector.getNormals = function(collider1, collider2) {
