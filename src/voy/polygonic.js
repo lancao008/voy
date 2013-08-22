@@ -1,11 +1,11 @@
-Voy.Polygon = function(position) {
+Voy.Polygonic = function(position) {
   Voy.Shape.call(this, position);
 };
 
-Voy.Polygon.prototype = Object.create(Voy.Shape);
+Voy.Polygonic.prototype = Object.create(Voy.Shape);
 
-Voy.Polygon.prototype.getClosestPoint = function(circle) {
-  if(!(circle instanceof Voy.Circle)) throw new Error('Voy.Polygon#getClosestPoint only supports circles at the moment.');
+Voy.Polygonic.prototype.getClosestPoint = function(circle) {
+  if(!(circle instanceof Voy.Circle)) throw new Error('Voy.Polygonic#getClosestPoint only supports circles at the moment.');
   var lineSegments = this.getLineSegments();
   var lineSegment, shortestDistance, distance, point, closestPoint;
 

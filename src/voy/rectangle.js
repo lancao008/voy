@@ -1,10 +1,10 @@
 Voy.Rectangle = function(position, size) {
-  Voy.Polygon.call(this, position);
+  Voy.Polygonic.call(this, position);
   if(!size) throw new Error('Rectangle needs size.');
   this.size = size;
 };
 
-Voy.Rectangle.prototype = Object.create(Voy.Polygon.prototype);
+Voy.Rectangle.prototype = Object.create(Voy.Polygonic.prototype);
 
 Voy.Rectangle.prototype.contains = function(point) {
   var result = (
