@@ -1,16 +1,16 @@
 EntityFactory = {
   createPlayer: function() {
     var radius = 25;
-    var a = new Voy.CircleCollider(radius);
+    var a = new Voy.RectangleCollider(radius);
     a.name = 'player collider';
 
     var player = new Voy.Entity(
       new Voy.RigidBody(),
       a,
       new PlayerInput(),
-      new Voy.CircleLayer('green', radius)
+      new Voy.RectangleLayer('green', new Voy.Vector2(50, 50))
     );
-    player.position = new Voy.Vector2(50, 290);
+    player.position = new Voy.Vector2(180, 350);
     return player;
   },
   createPond: function() {

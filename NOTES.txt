@@ -1,0 +1,2 @@
+Skulle man kalde Entity#position for localPosition i stedet? Så kan vi kalde getWorldPosition getPosition. Giver mere mening i forhold til fysik-motoren fx.
+Saml physic-filer i samme mappe.

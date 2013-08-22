@@ -4,7 +4,7 @@ Voy.RigidBody = function(options) {
   this.force = Voy.Vector2.zero();
   this.velocity = Voy.Vector2.zero();
   this.drag = 0.9;
-  this.maxSpeed = 0.3;
+  this.maxSpeed = 0.1;
   this.maxForce = 4;
   this.bounciness = 0.1;
 };

@@ -18,6 +18,10 @@ Voy.Vector2.prototype.multiply = function(factor) {
   this.set(result);
 };
 
+Voy.Vector2.prototype.toString = function() {
+  return "(" + this[0] + ", " + this[1] + ")";
+};
+
 Voy.Vector2.prototype.divide = function(divisor) {
   var result = Voy.Vector2.divide(this, divisor);
   this.set(result);
@@ -36,13 +40,24 @@ Voy.Vector2.prototype.truncate = function(maxLength) {
   }
 };
 
+Voy.Vector2.prototype.dot = function(vector) {
+  var dotProduct = this[0]*vector[0] + this[1]*vector[1];
+  return dotProduct;
+};
+
 Voy.Vector2.prototype.getLength = function() {
   var squareSum = Math.pow(this[0], 2) + Math.pow(this[1], 2);
   return Math.sqrt(squareSum);
 };
 
 Voy.Vector2.prototype.normalize = function() {
-  this.divide(this.getLength());
+  var vector = Voy.Vector2.normalize(this);
+  this.set(vector);
+};
+
+Voy.Vector2.prototype.negate = function() {
+  var vector = Voy.Vector2.negate(this);
+  this.set(vector);
 };
 
 Voy.Vector2.add = function(vector1, vector2) {
@@ -79,5 +94,28 @@ Voy.Vector2.divide = function(vector, divisor) {
 
 Voy.Vector2.zero = function() {
   var vector = new Voy.Vector2(0, 0);
+  return vector;
+};
+
+Voy.Vector2.up = function() {
+  var vector = new Voy.Vector2(0, 1);
+  return vector;
+};
+
+Voy.Vector2.right = function() {
+  var vector = new Voy.Vector2(1, 0);
+  return vector;
+};
+
+Voy.Vector2.normalize = function(vector) {
+  var vector = this.divide(vector, vector.getLength());
+  return vector;
+};
+
+Voy.Vector2.negate = function(vector) {
+  var vector = new Voy.Vector2(
+    -vector[0],
+    -vector[1]
+  );
   return vector;
 };
