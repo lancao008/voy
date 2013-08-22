@@ -1,3 +1,2 @@
-Saml physic-filer i samme mappe.
-Flyt physicsEngine simulate ud i RigidBody?
+
 Tilføj noget testing?

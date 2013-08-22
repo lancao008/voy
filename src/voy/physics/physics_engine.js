@@ -29,19 +29,7 @@ Voy.PhysicsEngine.prototype.update = function(timeDelta) {
 
 Voy.PhysicsEngine.prototype.simulate = function(timeDelta) {
   this.bodies.forEach(function(body) {
-    body.force.truncate(body.maxForce);
-
-    body.velocity.add(
-      Voy.Vector2.multiply(body.force, timeDelta)
-    );
-    body.velocity.multiply(1-body.drag);
-    body.velocity.truncate(body.maxSpeed);
-
-    body.getLocalPosition().add(
-      Voy.Vector2.multiply(body.velocity, timeDelta)
-    );
-
-    body.force = Voy.Vector2.zero();
+    body.simulate(timeDelta);
   }.bind(this));
 };
 

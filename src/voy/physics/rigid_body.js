@@ -14,3 +14,19 @@ Voy.RigidBody.prototype = Object.create(Voy.Component.prototype);
 Voy.RigidBody.prototype.getLocalPosition = function() {
   return this.entity.localPosition;
 };
+
+Voy.RigidBody.prototype.simulate = function(timeDelta) {
+  this.force.truncate(this.maxForce);
+
+  this.velocity.add(
+    Voy.Vector2.multiply(this.force, timeDelta)
+  );
+  this.velocity.multiply(1-this.drag);
+  this.velocity.truncate(this.maxSpeed);
+
+  this.getLocalPosition().add(
+    Voy.Vector2.multiply(this.velocity, timeDelta)
+  );
+
+  this.force = Voy.Vector2.zero();
+};
