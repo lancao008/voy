@@ -18,6 +18,11 @@ Voy.Vector2.prototype.multiply = function(factor) {
   this.set(result);
 };
 
+Voy.Vector2.prototype.toPoint = function() {
+  var point = new Voy.Point(this[0], this[1]);
+  return point;
+};
+
 Voy.Vector2.prototype.toString = function() {
   return "(" + this[0] + ", " + this[1] + ")";
 };
@@ -55,16 +60,6 @@ Voy.Vector2.prototype.getDotProduct = function(vector) {
 
 Voy.Vector2.prototype.getLength = function() {
   return Math.sqrt(this.getLengthSquared());
-};
-
-Voy.Vector2.prototype.getDistanceToPoint = function(point) {
-  var difference = Voy.Vector2.subtract(this, point);
-  return difference.getLength();
-};
-
-Voy.Vector2.prototype.getSquaredDistanceToPoint = function(point) {
-  var difference = Voy.Vector2.subtract(this, point);
-  return difference.getLengthSquared();
 };
 
 Voy.Vector2.prototype.getLengthSquared = function() {

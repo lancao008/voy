@@ -36,6 +36,7 @@ Voy.LineSegment.prototype.getClosestPoint = function(point) {
   var projection = Voy.Vector2.add(
     this[0],
     Voy.Vector2.multiply(pointsDifference, progress)
-  );
+  )
+  var projection = projection.toPoint();
   return projection;
 };

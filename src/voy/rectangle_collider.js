@@ -10,10 +10,10 @@ Voy.RectangleCollider.prototype.getVertices = function() {
   var halfSize = Voy.Vector2.multiply(this.size, 0.5);
 
   var vertices = [
-    new Voy.Vector2(position[0]-halfSize[0], position[1]-halfSize[1]),
-    new Voy.Vector2(position[0]+halfSize[0], position[1]-halfSize[1]),
-    new Voy.Vector2(position[0]-halfSize[0], position[1]+halfSize[1]),
-    new Voy.Vector2(position[0]+halfSize[0], position[1]+halfSize[1]),
+    new Voy.Point(position[0]-halfSize[0], position[1]-halfSize[1]),
+    new Voy.Point(position[0]+halfSize[0], position[1]-halfSize[1]),
+    new Voy.Point(position[0]-halfSize[0], position[1]+halfSize[1]),
+    new Voy.Point(position[0]+halfSize[0], position[1]+halfSize[1]),
   ];
 
   return vertices;
