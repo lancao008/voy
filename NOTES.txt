@@ -1,5 +1,10 @@
 Skulle man kalde Entity#position for localPosition i stedet? Så kan vi kalde getWorldPosition getPosition. Giver mere mening i forhold til fysik-motoren fx.
 Det vil også gøre at Collider#getPosition giver mere mening.
+Kunne man refactor'e Rectangle så den bare er en normal convex polygon?
 
+Ville det ikke være smukkere hvis bare man havde en Collider som havde en shape? I stedet for RectangleCollider laver vi en new Collider('rectangle') eller new Collider(shape), motivation: CircleCollider har en getDistance(lineSegment). Ville bare være kønnere i en cirkel synes jeg?
+Collider ville så skulle have en #getShape() som evt. genbruger et gammelt objekt men opdaterer størrelse/position?
+
+Prøv at lave sådan at Point nedarver fra Vector2? Motivation: Det er grimt at Vector2 har en #getDistance(point).
 
 Saml physic-filer i samme mappe.

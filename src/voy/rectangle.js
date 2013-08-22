@@ -19,9 +19,6 @@ Voy.Rectangle.prototype.contains = function(point) {
 Voy.Rectangle.prototype.overlaps = function(rectangle) {
   if(!(rectangle instanceof Voy.Rectangle)) throw new Error("Voy.Rectangle#overlaps only supports Voy.Rectangle objects for now.");
 
-  //console.log(this.position[0], '<=',rectangle.position[0] + rectangle.size[0]);
-  //console.log(this.position[0] + this.size[0], '>', rectangle.position[0]);
-
   return (
     this.position[0] < rectangle.position[0] + rectangle.size[0] &&
     this.position[0] + this.size[0] > rectangle.position[0] &&

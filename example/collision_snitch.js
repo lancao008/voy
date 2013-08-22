@@ -5,5 +5,5 @@ function CollisionSnitch() {
 CollisionSnitch.prototype = Object.create(Voy.Component.prototype);
 
 CollisionSnitch.prototype.collided = function() {
-  console.log('collision!');
+  console.log('Snitch reporting: collision!');
 };

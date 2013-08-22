@@ -10,7 +10,7 @@ EntityFactory = {
       new PlayerInput(),
       new Voy.CircleLayer('green', radius)
     );
-    player.position = new Voy.Vector2(400, 325);
+    player.position = new Voy.Vector2(220, 145);
     return player;
   },
   createPond: function() {
@@ -21,7 +21,6 @@ EntityFactory = {
     var pond = new Voy.Entity(
       new Voy.RigidBody(),
       a,
-      new CollisionSnitch(),
       new Voy.CircleLayer('blue', radius)
     );
     pond.position = new Voy.Vector2(400, 200);
@@ -36,7 +35,7 @@ EntityFactory = {
       a,
       new Voy.RectangleLayer('red', new Voy.Vector2(50, 50))
     );
-    zombie.position = new Voy.Vector2(x, 300);
+    zombie.position = new Voy.Vector2(x, 200);
     return zombie;
   },
   createWall: function(x, y) {

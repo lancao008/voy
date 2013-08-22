@@ -27,6 +27,14 @@ Voy.Vector2.prototype.divide = function(divisor) {
   this.set(result);
 };
 
+Voy.Vector2.prototype.getPerpendicular = function() {
+  var vector = new Voy.Vector2(
+    this[1]*-1,
+    this[0]
+  );
+  return vector;
+};
+
 Voy.Vector2.prototype.set = function(vector) {
   this[0] = vector[0];
   this[1] = vector[1];
@@ -40,19 +48,37 @@ Voy.Vector2.prototype.truncate = function(maxLength) {
   }
 };
 
-Voy.Vector2.prototype.dot = function(vector) {
+Voy.Vector2.prototype.getDotProduct = function(vector) {
   var dotProduct = this[0]*vector[0] + this[1]*vector[1];
   return dotProduct;
 };
 
 Voy.Vector2.prototype.getLength = function() {
-  var squareSum = Math.pow(this[0], 2) + Math.pow(this[1], 2);
-  return Math.sqrt(squareSum);
+  return Math.sqrt(this.getLengthSquared());
+};
+
+Voy.Vector2.prototype.getDistanceToPoint = function(point) {
+  var difference = Voy.Vector2.subtract(this, point);
+  return difference.getLength();
+};
+
+Voy.Vector2.prototype.getSquaredDistanceToPoint = function(point) {
+  var difference = Voy.Vector2.subtract(this, point);
+  return difference.getLengthSquared();
+};
+
+Voy.Vector2.prototype.getLengthSquared = function() {
+  return Math.pow(this[0], 2) + Math.pow(this[1], 2);
 };
 
 Voy.Vector2.prototype.normalize = function() {
   var vector = Voy.Vector2.normalize(this);
   this.set(vector);
+};
+
+Voy.Vector2.prototype.getNormalized = function() {
+  var vector = Voy.Vector2.normalize(this);
+  return vector;
 };
 
 Voy.Vector2.prototype.negate = function() {

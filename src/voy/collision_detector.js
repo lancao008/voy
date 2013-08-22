@@ -58,7 +58,7 @@ Voy.CollisionDetector.test = function(collider1, collider2) {
   var separation = Voy.Vector2.multiply(Voy.Vector2.normalize(smallestOverlapAxis), smallestOverlap);
 
   var centerDifference = Voy.Vector2.subtract(collider1.getPosition(), collider2.getPosition());
-  if(separation.dot(centerDifference) < 0) separation.negate();
+  if(separation.getDotProduct(centerDifference) < 0) separation.negate();
 
   var collision = new Voy.Collision(collider1.entity, collider2.entity, separation);
   return collision;
@@ -78,6 +78,29 @@ Voy.CollisionDetector.getNormals = function(collider1, collider2) {
   if(collider1 instanceof Voy.RectangleCollider && collider2 instanceof Voy.RectangleCollider) {
     return [Voy.Vector2.up(), Voy.Vector2.right()];
   } else {
-    throw new Error('Sorry, we only support rectangle-rectangle collision at the moment. Stay tuned for more!');
+    var collider1IsCircle = collider1 instanceof Voy.CircleCollider;
+    var collider2IsCircle = collider2 instanceof Voy.CircleCollider;
+    if(collider1IsCircle && collider2IsCircle) throw new Error('I cannot find axes for two circles.');
+    var eitherIsCircle = collider1IsCircle || collider2IsCircle;
+
+    if(eitherIsCircle) {
+      var circleCollider, polygonCollider;
+      if(collider1IsCircle) {
+        circleCollider = collider1;
+        polygonCollider = collider2;
+      } else {
+        circleCollider = collider2;
+        polygonCollider = collider1;
+      }
+      return [this.getCirclePolygonNormal(circleCollider, polygonCollider)];
+    } else {
+      throw new Error('Do not support polygon-polygon axes yet.');
+    }
   }
+};
+
+Voy.CollisionDetector.getCirclePolygonNormal = function(circleCollider, polygonCollider) {
+  var closestPoint = polygonCollider.getClosestPoint(circleCollider);
+  var pointCircleDifference = Voy.Vector2.subtract(closestPoint, circleCollider.getPosition());
+  return pointCircleDifference.getNormalized();
 };

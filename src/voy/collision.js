@@ -14,13 +14,10 @@ Voy.Collision.prototype.notify = function() {
 };
 
 Voy.Collision.prototype.resolve = function() {
-  //console.log('Old position', this[0].position.toString());
-  //console.log('Resolving by moving', this.separation.toString());
   this[0].position.add(Voy.Vector2.multiply(this.separation, 1.001));
 
   // we shut probably do something more clever about the velocity
   this[0].rigidBody.velocity = Voy.Vector2.zero();
-  //console.log('New position', this[0].position.toString());
   /*
   var centerDifference = Voy.Vector2.subtract(this[0].getWorldPosition(), this[1].getWorldPosition());
   var axis = Math.abs(centerDifference[0]) > Math.abs(centerDifference[1]) ? 0 : 1;
