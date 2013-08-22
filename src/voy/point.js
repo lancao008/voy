@@ -13,3 +13,13 @@ Voy.Point.prototype.getSquaredDistanceToPoint = function(point) {
   var difference = Voy.Vector2.subtract(this, point);
   return difference.getLengthSquared();
 };
+
+Voy.Point.zero = function() {
+  var vector = Voy.Vector2.zero();
+  return Voy.Point.createFromVector(vector);
+};
+
+Voy.Point.createFromVector = function(vector) {
+  var point = new Voy.Point(vector[0], vector[1]);
+  return point;
+};

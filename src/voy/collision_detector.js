@@ -34,16 +34,19 @@ Voy.CollisionDetector.prototype.pairAlreadyTested = function(collider1, collider
 
 Voy.CollisionDetector.test = function(collider1, collider2) {
   // Todo: do aabb testing first?
-  if(collider1 instanceof Voy.CircleCollider && collider2 instanceof Voy.CircleCollider) return this.testCircle(collider1, collider2);
+  var shape1 = collider1.getShape();
+  var shape2 = collider2.getShape();
 
-  var axes = this.getNormals(collider1, collider2);
+  if(shape1 instanceof Voy.Circle && shape2 instanceof Voy.Circle) return this.testCircle(collider1, collider2);
+
+  var axes = this.getNormals(shape1, shape2);
   var axis, projection1, projection2;
   var smallestOverlap, overlap, smallestOverlapAxis;
 
   for(var i=0; axes.length>i; i++) {
     axis = axes[i];
-    projection1 = collider1.project(axis);
-    projection2 = collider2.project(axis);
+    projection1 = shape1.project(axis);
+    projection2 = shape2.project(axis);
     if(!projection1.overlaps(projection2)) {
       return false;
     } else {
@@ -64,43 +67,43 @@ Voy.CollisionDetector.test = function(collider1, collider2) {
   return collision;
 };
 
-Voy.CollisionDetector.testCircle = function(circle1, circle2) {
-  var centerDifference = Voy.Vector2.subtract(circle1.getPosition(), circle2.getPosition());
+Voy.CollisionDetector.testCircle = function(collider1, collider2) {
+  var centerDifference = Voy.Vector2.subtract(collider1.getPosition(), collider2.getPosition());
   var centerDifferenceLength = centerDifference.getLength();
-  if(centerDifferenceLength < circle1.radius+circle2.radius) {
-    var separation = Voy.Vector2.multiply(Voy.Vector2.normalize(centerDifference), circle1.radius+circle2.radius-centerDifferenceLength);
-    var collision = new Voy.Collision(circle1.entity, circle2.entity, separation);
+  if(centerDifferenceLength < collider1.getRadius()+collider2.getRadius()) {
+    var separation = Voy.Vector2.multiply(Voy.Vector2.normalize(centerDifference), collider1.getRadius()+collider2.getRadius()-centerDifferenceLength);
+    var collision = new Voy.Collision(collider1.entity, collider2.entity, separation);
     return collision;
   }
 };
 
-Voy.CollisionDetector.getNormals = function(collider1, collider2) {
-  if(collider1 instanceof Voy.RectangleCollider && collider2 instanceof Voy.RectangleCollider) {
+Voy.CollisionDetector.getNormals = function(shape1, shape2) {
+  if(shape1 instanceof Voy.Rectangle && shape2 instanceof Voy.Rectangle) {
     return [Voy.Vector2.up(), Voy.Vector2.right()];
   } else {
-    var collider1IsCircle = collider1 instanceof Voy.CircleCollider;
-    var collider2IsCircle = collider2 instanceof Voy.CircleCollider;
-    if(collider1IsCircle && collider2IsCircle) throw new Error('I cannot find axes for two circles.');
-    var eitherIsCircle = collider1IsCircle || collider2IsCircle;
+    var shape1IsCircle = shape1 instanceof Voy.Circle;
+    var shape2IsCircle = shape2 instanceof Voy.Circle;
+    if(shape1IsCircle && shape2IsCircle) throw new Error('I cannot find axes for two circles.');
+    var eitherIsCircle = shape1IsCircle || shape2IsCircle;
 
     if(eitherIsCircle) {
-      var circleCollider, polygonCollider;
-      if(collider1IsCircle) {
-        circleCollider = collider1;
-        polygonCollider = collider2;
+      var circle, polygon;
+      if(shape1IsCircle) {
+        circle = shape1;
+        polygon = shape2;
       } else {
-        circleCollider = collider2;
-        polygonCollider = collider1;
+        circle = shape2;
+        polygon = shape1;
       }
-      return [this.getCirclePolygonNormal(circleCollider, polygonCollider)];
+      return [this.getCirclePolygonNormal(circle, polygon)];
     } else {
       throw new Error('Do not support polygon-polygon axes yet.');
     }
   }
 };
 
-Voy.CollisionDetector.getCirclePolygonNormal = function(circleCollider, polygonCollider) {
-  var closestPoint = polygonCollider.getClosestPoint(circleCollider);
-  var pointCircleDifference = Voy.Vector2.subtract(closestPoint, circleCollider.getPosition());
+Voy.CollisionDetector.getCirclePolygonNormal = function(circle, polygon) {
+  var closestPoint = polygon.getClosestPoint(circle);
+  var pointCircleDifference = Voy.Vector2.subtract(closestPoint, circle.position);
   return pointCircleDifference.getNormalized();
 };
