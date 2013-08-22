@@ -37,7 +37,7 @@ Voy.PhysicsEngine.prototype.simulate = function(timeDelta) {
     body.velocity.multiply(1-body.drag);
     body.velocity.truncate(body.maxSpeed);
 
-    body.getPosition().add(
+    body.getLocalPosition().add(
       Voy.Vector2.multiply(body.velocity, timeDelta)
     );
 

@@ -3,7 +3,7 @@ Voy.Entity = function() {
 
   this.components = [];
 
-  this.position = Voy.Vector2.zero();
+  this.localPosition = Voy.Vector2.zero();
 
   var components = Array.prototype.slice.call(arguments);
   components.forEach(function(component) {
@@ -34,8 +34,8 @@ Voy.Entity.prototype.addComponent = function(component) {
   component.entity = this;
 }
 
-Voy.Entity.prototype.getWorldPosition = function() {
-  return Voy.Vector2.add(this.parent.getWorldPosition(), this.position);
+Voy.Entity.prototype.getPosition = function() {
+  return Voy.Vector2.add(this.parent.getPosition(), this.localPosition);
 };
 
 Voy.Entity.prototype.update = function(timeDelta) {

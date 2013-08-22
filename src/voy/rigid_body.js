@@ -11,6 +11,6 @@ Voy.RigidBody = function(options) {
 
 Voy.RigidBody.prototype = Object.create(Voy.Component.prototype);
 
-Voy.RigidBody.prototype.getPosition = function() {
-  return this.entity.position;
+Voy.RigidBody.prototype.getLocalPosition = function() {
+  return this.entity.localPosition;
 };

@@ -7,5 +7,5 @@ Voy.RectangleLayer = function(color, size) {
 Voy.RectangleLayer.prototype = Object.create(Voy.Component.prototype);
 
 Voy.RectangleLayer.prototype.draw = function(canvas) {
-  canvas.drawRectangle(this.entity.position, this.size, this.color);
+  canvas.drawRectangle(this.entity.localPosition, this.size, this.color);
 };

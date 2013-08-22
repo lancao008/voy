@@ -14,7 +14,7 @@ Voy.Collision.prototype.notify = function() {
 };
 
 Voy.Collision.prototype.resolve = function() {
-  this[0].position.add(Voy.Vector2.multiply(this.separation, 1.001));
+  this[0].localPosition.add(Voy.Vector2.multiply(this.separation, 1.001));
 
   // we shut probably do something more clever about the velocity
   this[0].rigidBody.velocity = Voy.Vector2.zero();

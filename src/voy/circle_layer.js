@@ -7,5 +7,5 @@ Voy.CircleLayer = function(color, radius) {
 Voy.CircleLayer.prototype = Object.create(Voy.Component.prototype);
 
 Voy.CircleLayer.prototype.draw = function(canvas) {
-  canvas.drawCircle(this.entity.position, this.radius, this.color);
+  canvas.drawCircle(this.entity.localPosition, this.radius, this.color);
 };

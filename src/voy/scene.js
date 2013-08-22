@@ -22,7 +22,7 @@ Voy.Scene.prototype.registerComponents = function(entity) {
   }.bind(this));
 };
 
-Voy.Scene.prototype.getWorldPosition = function() {
+Voy.Scene.prototype.getPosition = function() {
   return Voy.Vector2.zero();
 };
 

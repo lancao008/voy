@@ -10,7 +10,7 @@ EntityFactory = {
       new PlayerInput(),
       new Voy.CircleLayer('green', radius)
     );
-    player.position = new Voy.Vector2(220, 145);
+    player.localPosition = new Voy.Vector2(220, 145);
     return player;
   },
   createPond: function() {
@@ -23,7 +23,7 @@ EntityFactory = {
       a,
       new Voy.CircleLayer('blue', radius)
     );
-    pond.position = new Voy.Vector2(400, 200);
+    pond.localPosition = new Voy.Vector2(400, 200);
     return pond;
   },
   createZombie: function(x) {
@@ -35,7 +35,7 @@ EntityFactory = {
       a,
       new Voy.RectangleLayer('red', new Voy.Vector2(50, 50))
     );
-    zombie.position = new Voy.Vector2(x, 200);
+    zombie.localPosition = new Voy.Vector2(x, 200);
     return zombie;
   },
   createWall: function(x, y) {
@@ -47,7 +47,7 @@ EntityFactory = {
       a,
       new Voy.RectangleLayer('grey', new Voy.Vector2(50, 50))
     );
-    wall.position = new Voy.Vector2(x, y);
+    wall.localPosition = new Voy.Vector2(x, y);
     return wall;
   },
   createHotzone: function(x, y) {
@@ -56,7 +56,7 @@ EntityFactory = {
       new CollisionSnitch(),
       new Voy.RectangleLayer('pink', new Voy.Vector2(50, 50))
     );
-    hotzone.position = new Voy.Vector2(x, y);
+    hotzone.localPosition = new Voy.Vector2(x, y);
     return hotzone;
   }
 };

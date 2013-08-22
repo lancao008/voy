@@ -6,7 +6,7 @@ Voy.RectangleCollider = function() {
 Voy.RectangleCollider.prototype = Object.create(Voy.PolygonCollider.prototype);
 
 Voy.RectangleCollider.prototype.getVertices = function() {
-  var position = this.entity.getWorldPosition();
+  var position = this.entity.getPosition();
   var halfSize = Voy.Vector2.multiply(this.size, 0.5);
 
   var vertices = [
