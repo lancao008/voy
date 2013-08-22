@@ -1,11 +1,3 @@
-PolygonCollider skal vel slettes?
-
-Ville det ikke være smukkere hvis bare man havde en Collider som havde en shape? I stedet for RectangleCollider laver vi en new Collider('rectangle') eller new Collider(shape), motivation: CircleCollider har en getDistance(lineSegment). Ville bare være kønnere i en cirkel synes jeg?
-Collider ville så skulle have en #getShape() som evt. genbruger et gammelt objekt men opdaterer størrelse/position?
-
 Saml physic-filer i samme mappe.
 
 Tilføj noget testing?
-
-
-Kunne man refactor'e Rectangle så den bare er en normal convex polygon?
