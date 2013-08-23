@@ -5,6 +5,9 @@ function Game() {
 
   this.assets.images.prefix = './images';
 
+  this.assets.texts.prefix = './data';
+  this.assets.texts.suffix = '.txt';
+
   var scene = new LoadingScene();
   this.changeScene(scene);
 }
