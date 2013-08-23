@@ -1,6 +1,8 @@
 Voy.Game = function() {
   this.componentRegistry = new Voy.ComponentRegistry();
 
+  this.assets = new Voy.AssetManager();
+
   this.renderer = new Voy.Renderer();
 
   this.physics = new Voy.PhysicsEngine(
@@ -26,6 +28,7 @@ Voy.Game.prototype.tick = function(timestamp) {
 };
 
 Voy.Game.prototype.update = function(timeDelta) {
+  if(this.scene.completed) this.changeScene(this.getNextScene());
   this.scene.update(timeDelta);
   this.physics.update(timeDelta);
   this.renderer.render(this.scene);
@@ -33,4 +36,14 @@ Voy.Game.prototype.update = function(timeDelta) {
 
 Voy.Game.prototype.scheduleNextTick = function() {
   requestAnimationFrame(this.tick.bind(this));
+};
+
+Voy.Game.prototype.changeScene = function(scene) {
+  if(this.scene) this.scene.exit();
+
+  scene.assets = this.assets;
+  scene.componentRegistry = this.componentRegistry;
+
+  scene.initialize();
+  this.scene = scene;
 };

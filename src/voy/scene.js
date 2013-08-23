@@ -1,10 +1,10 @@
-Voy.Scene = function(componentRegistry) {
+Voy.Scene = function() {
   Voy.EntityContainer.call(this);
-  this.componentRegistry = componentRegistry;
-  this.initialized = false;
 };
 
 Voy.Scene.prototype = Object.create(Voy.EntityContainer.prototype);
+
+Voy.Scene.prototype.initialize = function() { };
 
 Voy.Scene.prototype.addChild = function(entity) {
   Voy.EntityContainer.prototype.addChild.call(this, entity);
@@ -21,6 +21,8 @@ Voy.Scene.prototype.registerComponents = function(entity) {
     this.registerComponents(child);
   }.bind(this));
 };
+
+Voy.Scene.prototype.exit = function() { };
 
 Voy.Scene.prototype.getPosition = function() {
   return Voy.Vector2.zero();

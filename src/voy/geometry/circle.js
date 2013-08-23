@@ -13,7 +13,6 @@ Voy.Circle.prototype.overlaps = function(shape) {
   }
 };
 
-
 Voy.Circle.prototype.project = function(axis) {
   var centerProjection = axis.getDotProduct(this.position);
   var projection = new Voy.Projection(centerProjection-this.radius, centerProjection+this.radius);

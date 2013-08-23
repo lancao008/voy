@@ -5,14 +5,17 @@
   <script type="text/javascript" src="/lib/snitch.js"></script>
 
   <script type="text/javascript" src="/src/voy.js"></script>
+  <script type="text/javascript" src="/src/voy/event_emitter.js"></script>
   <script type="text/javascript" src="/src/voy/vector2.js"></script>
+  <script type="text/javascript" src="/src/voy/assets/loader.js"></script>
 
   <script type="text/javascript" src="/test/cases/vector2_test.js"></script>
+  <script type="text/javascript" src="/test/cases/loader_test.js"></script>
 
   <script type="text/javascript">
   window.addEventListener('load', function() {
     var element = document.querySelector('body > .results');
-    var testCaseClasses = [Vector2Test];
+    var testCaseClasses = [Vector2Test, LoaderTest];
     Snitch.run(element, testCaseClasses);
   });
   </script>

@@ -1,12 +1,10 @@
 EntityFactory = {
   createPlayer: function() {
     var radius = 25;
-    var a = new Voy.CircleCollider(radius);
-    a.name = 'player collider';
 
     var player = new Voy.Entity(
       new Voy.RigidBody(),
-      a,
+      new Voy.CircleCollider(radius),
       new PlayerInput(),
       new Voy.CircleLayer('green', radius)
     );
@@ -15,12 +13,10 @@ EntityFactory = {
   },
   createPond: function() {
     var radius = 100;
-    var a = new Voy.CircleCollider(radius);
-    a.name = 'pond collider';
 
     var pond = new Voy.Entity(
       new Voy.RigidBody(),
-      a,
+      new Voy.CircleCollider(radius),
       new Voy.CircleLayer('blue', radius)
     );
     pond.localPosition = new Voy.Vector2(400, 200);
