@@ -1,0 +1,49 @@
+body {
+  font-family: arial;
+  margin: 0;
+}
+
+body > .results > .status {
+  background: #4a873c;
+  height: 30px;
+}
+
+body > .results > .status.failed {
+  background: #bc2020;
+}
+
+body > .results > .summary {
+  display: inline-block;
+  margin: 10px;
+  border-collapse:collapse;
+}
+
+body > .results > .summary > tbody > tr > td {
+  padding: 8px;
+  border: 1px solid #aaa;
+}
+
+body > .results > .summary > tbody > tr > td:first-child {
+  padding-right: 30px;
+}
+
+body > .results > .summary > tbody > tr > td:last-child {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+body > .results > .failed_assertions {
+  display: inline-block;
+  vertical-align: top;
+  list-style: square;
+  margin: 10px 0 12px 30px;
+  padding: 0 0 0 20px;
+}
+
+body > .results > .failed_assertions > li {
+  padding: 8px 0;
+}
+
+body > .results > .summary > tbody > tr > td, body > .results > .failed_assertions {
+  font-size: 20px;
+}
