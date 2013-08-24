@@ -43,6 +43,10 @@ Voy.Canvas.prototype.drawPolygon = function(points, color) {
   this.context.fill();
 };
 
+Voy.Canvas.prototype.drawImage = function(position, image) {
+  this.context.drawImage(image, position[0]-image.width/2, position[1]-image.height/2);
+};
+
 Voy.Canvas.prototype.clear = function(color) {
   this.context.fillStyle = color;
   this.context.fillRect(0, 0, this.element.width, this.element.height);
