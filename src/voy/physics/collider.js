@@ -16,6 +16,10 @@ Voy.Collider.prototype.getRotation = function() {
   return this.entity.getRotation();
 };
 
+Voy.Collider.prototype.getRigidBody = function() {
+  return this.entity.rigidBody;
+};
+
 Voy.Collider.prototype.getShape = function() {
   this.shape.position = this.getPosition();
   if(this.shape instanceof Voy.Polygonic) this.shape.rotation = this.getRotation();

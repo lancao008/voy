@@ -33,7 +33,10 @@ Voy.CollisionDetector.prototype.pairAlreadyTested = function(collider1, collider
 };
 
 Voy.CollisionDetector.test = function(collider1, collider2) {
-  // Todo: do aabb testing first?
+  var rigidBody1 = collider1.getRigidBody();
+  var rigidBody2 = collider2.getRigidBody();
+  if(rigidBody1 && rigidBody2 && rigidBody1.static && rigidBody2.static) return null;
+
   var shape1 = collider1.getShape();
   var shape2 = collider2.getShape();
 
