@@ -7,7 +7,7 @@ Voy.RigidBody = function(options) {
   this.drag = typeof(options.drag) === 'undefined' ? 0.05 : options.drag;
   this.maxSpeed = typeof(options.maxSpeed) === 'undefined' ? 0.05 : options.maxSpeed;
   this.maxForce = typeof(options.maxForce) === 'undefined' ? 0.05 : options.maxForce;
-  this.bounciness = typeof(options.bounciness) === 'undefined' ? 0.05 : options.bounciness;
+  this.bounciness = typeof(options.bounciness) === 'undefined' ? 0.9 : options.bounciness;
 };
 
 Voy.RigidBody.prototype = Object.create(Voy.Component.prototype);
