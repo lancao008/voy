@@ -4,12 +4,9 @@ Voy.Scene = function() {
 
 Voy.Scene.prototype = Object.create(Voy.EntityContainer.prototype);
 
-Voy.Scene.prototype.initialize = function() { };
-
 Voy.Scene.prototype.addChild = function(entity) {
   Voy.EntityContainer.prototype.addChild.call(this, entity);
   this.registerComponents(entity);
-  entity.initialize();
 };
 
 Voy.Scene.prototype.getScene = function() {

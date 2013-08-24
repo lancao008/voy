@@ -3,3 +3,8 @@ Voy.Component = function(type) {
 }
 
 Voy.Component.prototype.initialize = function() { };
+Voy.Component.prototype.setup = function() { };
+
+Voy.Component.prototype.getScene = function() {
+  return this.entity.getScene();
+};

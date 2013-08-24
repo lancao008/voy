@@ -7,6 +7,18 @@ Voy.EntityContainer.prototype.addChild = function(entity) {
   this.children.push(entity);
 };
 
+Voy.EntityContainer.prototype.setup = function() {
+  this.children.forEach(function(child) {
+    child.setup();
+  });
+};
+
+Voy.EntityContainer.prototype.initialize = function() {
+  this.children.forEach(function(child) {
+    child.initialize();
+  });
+};
+
 Voy.EntityContainer.prototype.removeChild = function(entity) {
   var index = this.children.indexOf(entity);
   if(index == -1) throw new Error('Cannot remove child.');

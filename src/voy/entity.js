@@ -19,13 +19,18 @@ Voy.Entity.prototype.getScene = function() {
   return this.parent.getScene();
 };
 
+Voy.Entity.prototype.setup = function() {
+  this.components.forEach(function(component) {
+    component.setup();
+  });
+  Voy.EntityContainer.prototype.setup.call(this);
+};
+
 Voy.Entity.prototype.initialize = function() {
   this.components.forEach(function(component) {
     component.initialize();
   });
-  this.children.forEach(function(child) {
-    child.initialize();
-  });
+  Voy.EntityContainer.prototype.initialize.call(this);
 };
 
 Voy.Entity.prototype.addTag = function(tag) {
