@@ -14,6 +14,15 @@ Voy.Point.prototype.getSquaredDistanceToPoint = function(point) {
   return difference.getLengthSquared();
 };
 
+Voy.Point.prototype.rotate = function(rotationPoint, angle) {
+  this.subtract(rotationPoint);
+  var rotation = Voy.Matrix2.rotation(angle);
+  this.set(
+    Voy.Matrix2.multiply(rotation, this)
+  );
+  this.add(rotationPoint);
+};
+
 Voy.Point.zero = function() {
   var vector = Voy.Vector2.zero();
   return Voy.Point.createFromVector(vector);
