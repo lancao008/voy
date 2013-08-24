@@ -1,3 +1,4 @@
 Should probably refactor Voy.CollisionDetector.getRectangleRectangleNormals.
 Point#rotate should reuse Vector#rotate.
 Få styr på forskel mellem Vertex og points. Det flyder lidt pt..
+Lav tjek på points om de ER convex i polygon initializer. Algoritmen understøtter kun convex.
