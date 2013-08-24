@@ -52,6 +52,10 @@ Voy.Canvas.prototype.clear = function(color) {
   this.context.fillRect(0, 0, this.element.width, this.element.height);
 };
 
+Voy.Canvas.prototype.flipHorizontally = function() {
+  this.context.scale(-1, 1);
+};
+
 Voy.Canvas.prototype.save = function() {
   this.context.save();
 };
