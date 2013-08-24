@@ -15,6 +15,10 @@ Voy.Entity = function() {
 
 Voy.Entity.prototype = Object.create(Voy.EntityContainer.prototype);
 
+Voy.Entity.prototype.getScene = function() {
+  return this.parent.getScene();
+};
+
 Voy.Entity.prototype.initialize = function() {
   this.components.forEach(function(component) {
     component.initialize();

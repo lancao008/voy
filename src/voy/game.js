@@ -42,6 +42,7 @@ Voy.Game.prototype.changeScene = function(scene) {
   if(this.scene) this.scene.exit();
 
   scene.assets = this.assets;
+  scene.renderer = this.renderer;
   scene.componentRegistry = this.componentRegistry;
 
   scene.initialize();

@@ -12,6 +12,10 @@ Voy.Scene.prototype.addChild = function(entity) {
   entity.initialize();
 };
 
+Voy.Scene.prototype.getScene = function() {
+  return this;
+};
+
 Voy.Scene.prototype.registerComponents = function(entity) {
   entity.components.forEach(function(component) {
     this.componentRegistry.add(component);

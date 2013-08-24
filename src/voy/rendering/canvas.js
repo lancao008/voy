@@ -9,6 +9,7 @@ Voy.Canvas = function() {
 Voy.Canvas.prototype.updateResolution = function(width, height) {
   this.element.width = width;
   this.element.height = height;
+  this.resolution = new Voy.Vector2(width, height);
 };
 
 Voy.Canvas.prototype.drawCircle = function(position, radius, color) {
