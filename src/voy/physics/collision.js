@@ -17,9 +17,7 @@ Voy.Collision.prototype.resolve = function() {
   this[0].localPosition.add(Voy.Vector2.multiply(this.separation, 1.001));
 
   var normal = Voy.Vector2.normalize(this.separation);
-
   var velocityDifference = Voy.Vector2.subtract(this[0].rigidBody.velocity, this[1].rigidBody.velocity);
-
   var velocityAlongNormal = velocityDifference.getDotProduct(normal);
 
   if(velocityAlongNormal > 0) return false;
@@ -27,6 +25,22 @@ Voy.Collision.prototype.resolve = function() {
   var bounciness = Math.min(this[0].rigidBody.bounciness, this[1].rigidBody.bounciness);
 
   var impulsePower = -velocityAlongNormal*(1+bounciness)*1.01;
+
+  var noStatic = !this[0].rigidBody.static && !this[1].rigidBody.static;
+  if(noStatic) impulsePower /= 1/this[0].rigidBody.mass + 1/this[1].rigidBody.mass;
   var impulse = Voy.Vector2.multiply(normal, impulsePower);
-  this[0].rigidBody.velocity.add(impulse);
+
+  if(noStatic) {
+    this[0].rigidBody.velocity.add(
+      Voy.Vector2.multiply(impulse, 1/this[0].rigidBody.mass)
+    );
+    this[1].rigidBody.velocity.subtract(
+      Voy.Vector2.multiply(impulse, 1/this[1].rigidBody.mass)
+    );
+  } else {
+    var nonStaticIndex = this[0].rigidBody.static ? 1 : 0;
+    this[nonStaticIndex].rigidBody.velocity.add(impulse);
+  }
+
+  // todo: move rigid body det stykke den var separeret med nye hastighed? ellers bliver den "snydt" for lidt tid
 };
