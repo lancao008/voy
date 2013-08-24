@@ -24,12 +24,10 @@ EntityFactory = {
   },
   createZombie: function(x) {
     var size = new Voy.Vector2(50, 50)
-    var a = new Voy.RectangleCollider(size);
-    a.name = 'zombie collider' + x;
 
     var zombie = new Voy.Entity(
       new Voy.RigidBody(),
-      a,
+      new Voy.RectangleCollider(size),
       new Voy.RectangleLayer('red', size)
     );
     zombie.localPosition = new Voy.Vector2(x, 200);
