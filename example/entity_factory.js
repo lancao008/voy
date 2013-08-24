@@ -23,34 +23,36 @@ EntityFactory = {
     return pond;
   },
   createZombie: function(x) {
-    var a = new Voy.RectangleCollider();
+    var size = new Voy.Vector2(50, 50)
+    var a = new Voy.RectangleCollider(size);
     a.name = 'zombie collider' + x;
 
     var zombie = new Voy.Entity(
       new Voy.RigidBody(),
       a,
-      new Voy.RectangleLayer('red', new Voy.Vector2(50, 50))
+      new Voy.RectangleLayer('red', size)
     );
     zombie.localPosition = new Voy.Vector2(x, 200);
     return zombie;
   },
   createWall: function(x, y) {
-    var a = new Voy.RectangleCollider();
-    a.name = 'wall collider' + x;
+    var size = new Voy.Vector2(50, 50);
 
     var wall = new Voy.Entity(
       new Voy.RigidBody({ static: true }),
-      a,
-      new Voy.RectangleLayer('grey', new Voy.Vector2(50, 50))
+      new Voy.RectangleCollider(size),
+      new Voy.RectangleLayer('grey', size)
     );
     wall.localPosition = new Voy.Vector2(x, y);
     return wall;
   },
   createHotzone: function(x, y) {
+    var size = new Voy.Vector2(50, 50);
+
     var hotzone = new Voy.Entity(
-      new Voy.RectangleCollider(),
+      new Voy.RectangleCollider(size),
       new CollisionSnitch(),
-      new Voy.RectangleLayer('pink', new Voy.Vector2(50, 50))
+      new Voy.RectangleLayer('pink', size)
     );
     hotzone.localPosition = new Voy.Vector2(x, y);
     return hotzone;
