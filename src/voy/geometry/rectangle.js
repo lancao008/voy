@@ -6,21 +6,15 @@ Voy.Rectangle = function(position, size, rotation) {
 
 Voy.Rectangle.prototype = Object.create(Voy.Polygonic.prototype);
 
-Voy.Rectangle.prototype.getVertices = function() {
+Voy.Rectangle.prototype.getLocalVertices = function() {
   var halfSize = Voy.Vector2.multiply(this.size, 0.5);
 
   var vertices = [
-    new Voy.Point(this.position[0]-halfSize[0], this.position[1]-halfSize[1]),
-    new Voy.Point(this.position[0]+halfSize[0], this.position[1]-halfSize[1]),
-    new Voy.Point(this.position[0]-halfSize[0], this.position[1]+halfSize[1]),
-    new Voy.Point(this.position[0]+halfSize[0], this.position[1]+halfSize[1]),
+    new Voy.Point(-halfSize[0], -halfSize[1]),
+    new Voy.Point(+halfSize[0], -halfSize[1]),
+    new Voy.Point(-halfSize[0], +halfSize[1]),
+    new Voy.Point(+halfSize[0], +halfSize[1])
   ];
-
-  if(this.rotation) {
-    vertices.forEach(function(vertex) {
-      vertex.rotate(this.position, this.rotation);
-    }.bind(this));
-  }
 
   return vertices;
 };
