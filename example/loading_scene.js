@@ -8,7 +8,7 @@ LoadingScene.prototype.initialize = function() {
   this.assets.on('loadingCompleted', this.complete.bind(this));
 
   this.assets.images.add('footman.gif');
-  this.assets.texts.add('test');
+  this.assets.texts.add('levels');
 };
 
 LoadingScene.prototype.complete = function() {

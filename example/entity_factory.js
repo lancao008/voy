@@ -33,17 +33,15 @@ EntityFactory = {
     zombie.localPosition = new Voy.Vector2(x, 200);
     return zombie;
   },
-  createWall: function(x, y) {
-    var size = new Voy.Vector2(50, 100);
-
+  createWall: function(position, size, rotation) {
     var wall = new Voy.Entity(
       new Voy.RigidBody({ static: true }),
       new Voy.RectangleCollider(size),
       new Voy.RectangleLayer('grey', size)
     );
 
-    wall.localRotation = 0.9;
-    wall.localPosition = new Voy.Vector2(x, y);
+    wall.localPosition = position;
+    wall.localRotation = rotation;
     return wall;
   },
   createHotzone: function(x, y) {

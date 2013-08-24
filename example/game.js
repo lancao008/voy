@@ -6,7 +6,7 @@ function Game() {
   this.assets.images.prefix = './images';
 
   this.assets.texts.prefix = './data';
-  this.assets.texts.suffix = '.txt';
+  this.assets.texts.suffix = '.json';
 
   var scene = new LoadingScene();
   this.changeScene(scene);

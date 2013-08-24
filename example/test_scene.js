@@ -7,9 +7,15 @@ TestScene.prototype = Object.create(Voy.Scene.prototype);
 
 TestScene.prototype.initialize = function() {
   this.addChild(EntityFactory.createPlayer());
-  this.addChild(EntityFactory.createWall(330, 200));
-  this.addChild(EntityFactory.createZombie(500));
-  this.addChild(EntityFactory.createZombie(700));
-  this.addChild(EntityFactory.createHotzone(100, 100));
-  this.addChild(EntityFactory.createPond(100, 100));
+
+  var levelData = JSON.parse(this.assets.texts.levels)[1];
+  levelData.walls.forEach(function(wallData) {
+    var position = new Voy.Point(wallData.position[0], wallData.position[1]);
+    var size = new Voy.Vector2(wallData.size[0], wallData.size[1]);
+    var rotation = wallData.rotation;
+
+    console.log(wallData);
+
+    this.addChild(EntityFactory.createWall(position, size, rotation));
+  }.bind(this));
 };
