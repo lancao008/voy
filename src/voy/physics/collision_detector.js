@@ -100,9 +100,15 @@ Voy.CollisionDetector.getNormals = function(shape1, shape2) {
       }
       return [this.getCirclePolygonNormal(circle, polygon)];
     } else {
-      throw new Error('Do not support polygon-polygon axes yet.');
+      return this.getPolygonicPolygonicNormals(shape1, shape2);
     }
   }
+};
+
+Voy.CollisionDetector.getPolygonicPolygonicNormals = function(polygonic1, polygonic2) {
+  var axes = polygonic1.getNormals();
+  axes = axes.concat(polygonic2.getNormals());
+  return axes;
 };
 
 Voy.CollisionDetector.getRectangleRectangleNormals = function(rectangle1, rectangle2) {

@@ -30,6 +30,19 @@ Voy.Canvas.prototype.drawRectangle = function(position, size, color) {
   this.context.fillRect(position[0]-size[0]/2, position[1]-size[1]/2, size[0], size[1]);
 };
 
+Voy.Canvas.prototype.drawPolygon = function(points, color) {
+  if(color) this.context.fillStyle = color;
+
+  this.context.beginPath();
+  this.context.moveTo(points[0][0], points[0][1]);
+  for(var i=1; points.length>i; i++) {
+    this.context.lineTo(points[i][0], points[i][1]);
+  }
+  this.context.lineTo(points[0][0], points[0][1]);
+  this.context.closePath();
+  this.context.fill();
+};
+
 Voy.Canvas.prototype.clear = function(color) {
   this.context.fillStyle = color;
   this.context.fillRect(0, 0, this.element.width, this.element.height);

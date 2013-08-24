@@ -1,2 +1,3 @@
 Should probably refactor Voy.CollisionDetector.getRectangleRectangleNormals.
 Point#rotate should reuse Vector#rotate.
+Få styr på forskel mellem Vertex og points. Det flyder lidt pt..
