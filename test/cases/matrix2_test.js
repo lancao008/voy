@@ -16,3 +16,15 @@ Matrix2Test.prototype['test vector multiplication'] = function() {
   this.confirmEqual(24, resultVector[0]);
   this.confirmEqual(-17, resultVector[1]);
 };
+
+Matrix2Test.prototype['test rotation'] = function() {
+  var angle = Math.PI/4;
+  var matrix = Voy.Matrix2.rotation(angle);
+
+  var point = new Voy.Point(4, 0);
+  var resultVector = Voy.Matrix2.multiply(matrix, point);
+
+  var delta = 0.01;
+  this.confirmInDelta(2.83, resultVector[0], delta);
+  this.confirmInDelta(2.83, resultVector[1], delta);
+};

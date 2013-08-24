@@ -14,7 +14,7 @@ Voy.Matrix2 = function() {
 Voy.Matrix2.rotation = function(angle) {
   var matrix = new Voy.Matrix2(
     Math.cos(angle), -Math.sin(angle),
-    Math.sin(x), Math.cos(angle)
+    Math.sin(angle), Math.cos(angle)
   );
   return matrix;
 };
