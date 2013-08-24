@@ -14,6 +14,15 @@ Voy.Collision.prototype.notify = function() {
 };
 
 Voy.Collision.prototype.resolve = function() {
+  // Improvement possibility
+  // Currently the effort and time going "into" the other body is essentially neutralized.
+  // For a even more perfect simulation one would calculate how much time each moving body
+  // lost due to this separation translation. Something like:
+  // timeLost = this.separation.getLength()/velocity.getLength()
+  // and then when the new velocity is calculated
+  // position.add(timeLost*velocity)
+  // Until I haven't really needed this, so for simplicity's sake I haven't added it.
+
   this[0].localPosition.add(Voy.Vector2.multiply(this.separation, 1.001));
 
   var normal = Voy.Vector2.normalize(this.separation);
@@ -41,6 +50,4 @@ Voy.Collision.prototype.resolve = function() {
     var nonStaticIndex = this[0].rigidBody.static ? 1 : 0;
     this[nonStaticIndex].rigidBody.velocity.add(impulse);
   }
-
-  // todo: move rigid body det stykke den var separeret med nye hastighed? ellers bliver den "snydt" for lidt tid
 };
