@@ -79,7 +79,7 @@ Voy.CollisionDetector.testCircle = function(collider1, collider2) {
 
 Voy.CollisionDetector.getNormals = function(shape1, shape2) {
   if(shape1 instanceof Voy.Rectangle && shape2 instanceof Voy.Rectangle) {
-    return [Voy.Vector2.up(), Voy.Vector2.right()];
+    return this.getRectangleRectangleNormals(shape1, shape2);
   } else {
     var shape1IsCircle = shape1 instanceof Voy.Circle;
     var shape2IsCircle = shape2 instanceof Voy.Circle;
@@ -99,6 +99,37 @@ Voy.CollisionDetector.getNormals = function(shape1, shape2) {
     } else {
       throw new Error('Do not support polygon-polygon axes yet.');
     }
+  }
+};
+
+Voy.CollisionDetector.getRectangleRectangleNormals = function(rectangle1, rectangle2) {
+  var rotation1 = rectangle1.rotation;
+  var rotation2 = rectangle2.rotation;
+
+  var up = Voy.Vector2.up();
+  var right = Voy.Vector2.right();
+
+  if(rotation1 == rotation2) {
+    if(rotation1 == 0) {
+      return [up, right];
+    } else {
+      up.rotate(rotation1);
+      right.rotate(rotation2);
+      return [up, right];
+    }
+  } else {
+    var up1 = up.clone();
+    up1.rotate(rotation1);
+    var right1 = right.clone();
+    right1.rotate(rotation1);
+
+    var up2 = up.clone();
+    up2.rotate(rotation2);
+    var right2 = right.clone();
+    right2.rotate(rotation2);
+
+    var normals = [up1, right1, up2, right2];
+    return normals;
   }
 };
 

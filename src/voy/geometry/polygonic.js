@@ -1,5 +1,6 @@
-Voy.Polygonic = function(position) {
+Voy.Polygonic = function(position, rotation) {
   Voy.Shape.call(this, position);
+  this.rotation = typeof(rotation) === 'undefined' ? 0 : rotation;
 };
 
 Voy.Polygonic.prototype = Object.create(Voy.Shape);

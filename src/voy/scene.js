@@ -28,6 +28,10 @@ Voy.Scene.prototype.getPosition = function() {
   return Voy.Vector2.zero();
 };
 
+Voy.Scene.prototype.getRotation = function() {
+  return 0;
+};
+
 Voy.Scene.prototype.removeChild = function() {
   throw new Error('Muhaha, you cannot remove children from the scene. They are to remain in the scene for all perpetuity.');
 };

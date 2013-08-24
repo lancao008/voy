@@ -29,7 +29,6 @@ Voy.LineSegment.prototype.getClosestPoint = function(point) {
   var pointToLineSegmentStart = Voy.Vector2.subtract(point, this[0]);
   var progress = pointsDifference.getDotProduct(pointToLineSegmentStart)/lengthSquared;
 
-  //console.log('progress:', progress);
   if(progress < 0) return this[0];
   if(progress > 1) return this[1];
 

@@ -16,10 +16,16 @@ Voy.Renderer.prototype.updateResolution = function(width, height) {
 };
 
 Voy.Renderer.prototype.drawEntity = function(entity) {
+  this.canvas.save();
+
+  this.canvas.translate(entity.localPosition);
+  if(entity.localRotation) this.canvas.rotate(entity.localRotation);
+
   entity.components.forEach(function(component) {
     if(component.draw) component.draw(this.canvas);
   }.bind(this));
   this.drawChildren(entity);
+  this.canvas.restore();
 };
 
 Voy.Renderer.prototype.drawChildren = function(entityContainer) {

@@ -18,9 +18,21 @@ Voy.Vector2.prototype.multiply = function(factor) {
   this.set(result);
 };
 
+Voy.Vector2.prototype.clone = function(factor) {
+  var vector = new Voy.Vector2(this[0], this[1]);
+  return vector;
+};
+
 Voy.Vector2.prototype.toPoint = function() {
   var point = new Voy.Point(this[0], this[1]);
   return point;
+};
+
+Voy.Vector2.prototype.rotate = function(angle) {
+  var rotation = Voy.Matrix2.rotation(angle);
+  this.set(
+    Voy.Matrix2.multiply(rotation, this)
+  );
 };
 
 Voy.Vector2.prototype.toString = function() {

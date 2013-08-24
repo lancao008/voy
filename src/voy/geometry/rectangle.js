@@ -1,5 +1,5 @@
-Voy.Rectangle = function(position, size) {
-  Voy.Polygonic.call(this, position);
+Voy.Rectangle = function(position, size, rotation) {
+  Voy.Polygonic.call(this, position, rotation);
   if(!size) throw new Error('Rectangle needs size.');
   this.size = size;
 };
@@ -16,18 +16,6 @@ Voy.Rectangle.prototype.contains = function(point) {
   return result;
 };
 
-Voy.Rectangle.prototype.overlaps = function(rectangle) {
-  if(!(rectangle instanceof Voy.Rectangle)) throw new Error("Voy.Rectangle#overlaps only supports Voy.Rectangle objects for now.");
-
-  return (
-    this.position[0] < rectangle.position[0] + rectangle.size[0] &&
-    this.position[0] + this.size[0] > rectangle.position[0] &&
-    this.position[1] < rectangle.position[1] + rectangle.size[1] &&
-    this.position[1] + this.size[1] > rectangle.position[1]
-  );
-};
-
-
 Voy.Rectangle.prototype.getVertices = function() {
   var halfSize = Voy.Vector2.multiply(this.size, 0.5);
 
@@ -37,6 +25,12 @@ Voy.Rectangle.prototype.getVertices = function() {
     new Voy.Point(this.position[0]-halfSize[0], this.position[1]+halfSize[1]),
     new Voy.Point(this.position[0]+halfSize[0], this.position[1]+halfSize[1]),
   ];
+
+  if(this.rotation) {
+    vertices.forEach(function(vertex) {
+      vertex.rotate(this.position, this.rotation);
+    }.bind(this));
+  }
 
   return vertices;
 };

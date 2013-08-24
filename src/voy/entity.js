@@ -4,6 +4,7 @@ Voy.Entity = function() {
   this.components = [];
 
   this.localPosition = Voy.Vector2.zero();
+  this.localRotation = 0;
 
   var components = Array.prototype.slice.call(arguments);
   components.forEach(function(component) {
@@ -36,6 +37,10 @@ Voy.Entity.prototype.addComponent = function(component) {
 
 Voy.Entity.prototype.getPosition = function() {
   return Voy.Vector2.add(this.parent.getPosition(), this.localPosition);
+};
+
+Voy.Entity.prototype.getRotation = function() {
+  return this.parent.getRotation()+this.localRotation;
 };
 
 Voy.Entity.prototype.update = function(timeDelta) {

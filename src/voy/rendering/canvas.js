@@ -20,6 +20,10 @@ Voy.Canvas.prototype.drawCircle = function(position, radius, color) {
   this.context.fill();
 };
 
+Voy.Canvas.prototype.translate = function(translation) {
+  this.context.translate(translation[0], translation[1]);
+};
+
 Voy.Canvas.prototype.drawRectangle = function(position, size, color) {
   if(color) this.context.fillStyle = color;
   this.context.fillRect(position[0]-size[0]/2, position[1]-size[1]/2, size[0], size[1]);
@@ -28,4 +32,16 @@ Voy.Canvas.prototype.drawRectangle = function(position, size, color) {
 Voy.Canvas.prototype.clear = function(color) {
   this.context.fillStyle = color;
   this.context.fillRect(0, 0, this.element.width, this.element.height);
+};
+
+Voy.Canvas.prototype.save = function() {
+  this.context.save();
+};
+
+Voy.Canvas.prototype.restore = function() {
+  this.context.restore();
+};
+
+Voy.Canvas.prototype.rotate = function(angle) {
+  this.context.rotate(angle);
 };

@@ -5,14 +5,6 @@ Voy.Circle = function(position, radius) {
 
 Voy.Circle.prototype = Object.create(Voy.Shape.prototype);
 
-Voy.Circle.prototype.overlaps = function(shape) {
-  if(!(shape instanceof Voy.Circle)) throw new Error('Sorry, I only do circles at the moment.');
-  var centerDistance = Voy.Vector2.subtract(shape.position, this.position).getLength();
-  if(centerDistance < this.radius + shape.radius) {
-    return true;
-  }
-};
-
 Voy.Circle.prototype.project = function(axis) {
   var centerProjection = axis.getDotProduct(this.position);
   var projection = new Voy.Projection(centerProjection-this.radius, centerProjection+this.radius);

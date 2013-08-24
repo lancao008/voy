@@ -1,1 +1,1 @@
-No notes at the moment.
+Should probably refactor Voy.CollisionDetector.getRectangleRectangleNormals.
