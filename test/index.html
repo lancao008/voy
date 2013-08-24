@@ -9,6 +9,8 @@
   <script type="text/javascript" src="/src/voy/event_emitter.js"></script>
   <script type="text/javascript" src="/src/voy/matrix2.js"></script>
   <script type="text/javascript" src="/src/voy/vector2.js"></script>
+  <script type="text/javascript" src="/src/voy/entity_container.js"></script>
+  <script type="text/javascript" src="/src/voy/entity.js"></script>
   <script type="text/javascript" src="/src/voy/geometry/point.js"></script>
   <script type="text/javascript" src="/src/voy/assets/loader.js"></script>
 
@@ -16,11 +18,13 @@
   <script type="text/javascript" src="/test/cases/matrix2_test.js"></script>
   <script type="text/javascript" src="/test/cases/loader_test.js"></script>
   <script type="text/javascript" src="/test/cases/point_test.js"></script>
+  <script type="text/javascript" src="/test/cases/entity_test.js"></script>
+  <script type="text/javascript" src="/test/cases/entity_container_test.js"></script>
 
   <script type="text/javascript">
   window.addEventListener('load', function() {
     var element = document.querySelector('body > .results');
-    var testCaseClasses = [Vector2Test, LoaderTest, Matrix2Test, PointTest];
+    var testCaseClasses = [Vector2Test, LoaderTest, Matrix2Test, PointTest, EntityTest, EntityContainerTest];
     Snitch.run(element, testCaseClasses);
   });
   </script>

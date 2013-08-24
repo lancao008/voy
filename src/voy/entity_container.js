@@ -19,3 +19,16 @@ Voy.EntityContainer.prototype.updateChildren = function(timeDelta) {
     child.update(timeDelta);
   });
 };
+
+Voy.EntityContainer.prototype.findEntityWithTag = function(tag) {
+  var child, grandChild;
+  for(var i=0; this.children.length>i; i++) {
+    child = this.children[i];
+    if(child.hasTag(tag)) return child;
+  }
+  for(var i=0; this.children.length>i; i++) {
+    child = this.children[i];
+    grandChild = child.findEntityWithTag(tag);
+    if(grandChild) return grandChild;
+  }
+};

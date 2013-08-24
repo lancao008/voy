@@ -2,6 +2,7 @@ Voy.Entity = function() {
   Voy.EntityContainer.call(this);
 
   this.components = [];
+  this.tags = [];
 
   this.localPosition = Voy.Vector2.zero();
   this.localRotation = 0;
@@ -18,6 +19,18 @@ Voy.Entity.prototype.initialize = function() {
   this.components.forEach(function(component) {
     component.initialize();
   });
+  this.children.forEach(function(child) {
+    child.initialize();
+  });
+};
+
+Voy.Entity.prototype.addTag = function(tag) {
+  this.tags.push(tag);
+};
+
+Voy.Entity.prototype.hasTag = function(tag) {
+  var index = this.tags.indexOf(tag);
+  return index !== -1;
 };
 
 Voy.Entity.prototype.notify = function() {
