@@ -6,16 +6,6 @@ Voy.Rectangle = function(position, size, rotation) {
 
 Voy.Rectangle.prototype = Object.create(Voy.Polygonic.prototype);
 
-Voy.Rectangle.prototype.contains = function(point) {
-  var result = (
-    this.position[0] <= point[0] &&
-    this.position[0] + this.size[0] > point[0] &&
-    this.position[1] <= point[1] &&
-    this.position[1] + this.size[1] > point[1]
-  );
-  return result;
-};
-
 Voy.Rectangle.prototype.getVertices = function() {
   var halfSize = Voy.Vector2.multiply(this.size, 0.5);
 
