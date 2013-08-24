@@ -51,7 +51,7 @@ Voy.Entity.prototype.notify = function() {
 };
 
 Voy.Entity.prototype.addComponent = function(component) {
-  if(this[component.type]) throw new Error('Already got a component of type "' + type + '".');
+  if(this[component.type]) throw new Error('Already got a component of type "' + component.type + '".');
   this[component.type] = component;
   this.components.push(component);
   component.entity = this;
