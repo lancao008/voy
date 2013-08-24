@@ -4,10 +4,10 @@ Voy.RigidBody = function(options) {
   this.static = options.static || false;
   this.force = Voy.Vector2.zero();
   this.velocity = Voy.Vector2.zero();
-  this.drag = options.drag || 0.05;
-  this.maxSpeed = options.maxSpeed || 0.2;
-  this.maxForce = options.maxForce || 0.01;
-  this.bounciness = options.bounciness || 0.1;
+  this.drag = typeof(options.drag) === 'undefined' ? 0.05 : options.drag;
+  this.maxSpeed = typeof(options.maxSpeed) === 'undefined' ? 0.05 : options.maxSpeed;
+  this.maxForce = typeof(options.maxForce) === 'undefined' ? 0.05 : options.maxForce;
+  this.bounciness = typeof(options.bounciness) === 'undefined' ? 0.05 : options.bounciness;
 };
 
 Voy.RigidBody.prototype = Object.create(Voy.Component.prototype);
