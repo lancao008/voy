@@ -14,7 +14,7 @@ Voy.EntityContainer.prototype.removeChild = function(entity) {
   this.children.splice(index, 1);
 };
 
-Voy.EntityContainer.prototype.updateChildren = function(entity) {
+Voy.EntityContainer.prototype.updateChildren = function(timeDelta) {
   this.children.forEach(function(child) {
     child.update(timeDelta);
   });
