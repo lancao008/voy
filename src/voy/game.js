@@ -10,6 +10,8 @@ Voy.Game = function() {
   );
 
   Voy.Keyboard.initialize();
+  Voy.Mouse.initialize(this.getCanvasElement());
+  this.mouse = Voy.Mouse.getInstance();
 };
 
 Voy.Game.prototype.getCanvasElement = function() {
@@ -33,6 +35,7 @@ Voy.Game.prototype.update = function(timeDelta) {
   this.physics.update(timeDelta);
   this.renderer.render(this.scene);
   this.physics.resetForces();
+  this.mouse.reset();
 };
 
 Voy.Game.prototype.scheduleNextTick = function() {
