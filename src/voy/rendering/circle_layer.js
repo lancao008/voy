@@ -1,4 +1,5 @@
-Voy.CircleLayer = function(color, radius) {
+Voy.CircleLayer = function(radius, color) {
+  if(!color) color = 'blue';
   Voy.Layer.call(this, 'circleLayer');
   this.color = color;
   this.radius = radius;
@@ -7,5 +8,5 @@ Voy.CircleLayer = function(color, radius) {
 Voy.CircleLayer.prototype = Object.create(Voy.Layer.prototype);
 
 Voy.CircleLayer.prototype.draw = function(canvas) {
-  canvas.drawCircle(Voy.Vector2.zero(), this.radius, this.color);
+  canvas.drawCircle(this.radius, this.color);
 };

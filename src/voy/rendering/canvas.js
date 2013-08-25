@@ -14,11 +14,15 @@ Voy.Canvas.prototype.updateResolution = function(width, height) {
   this.resolution = new Voy.Vector2(width, height);
 };
 
-Voy.Canvas.prototype.drawCircle = function(position, radius, color) {
+Voy.Canvas.prototype.drawCircle = function(radius, color, position, startAngle, endAngle) {
+  if(!position) position = Voy.Point.zero();
   if(color) this.context.fillStyle = color;
+  if(!startAngle) startAngle = 0;
+  if(!endAngle) endAngle = Math.PI*2;
 
   this.context.beginPath();
-  this.context.arc(position[0], position[1], radius, 0, Math.PI*2, true);
+  this.context.moveTo(0, 0);
+  this.context.arc(position[0], position[1], radius, startAngle, endAngle, false);
   this.context.closePath();
   this.context.fill();
 };
@@ -27,7 +31,8 @@ Voy.Canvas.prototype.translate = function(translation) {
   this.context.translate(translation[0], translation[1]);
 };
 
-Voy.Canvas.prototype.drawRectangle = function(position, size, color) {
+Voy.Canvas.prototype.drawRectangle = function(size, color, position) {
+  if(!position) position = Voy.Point.zero();
   if(color) this.context.fillStyle = color;
   this.context.fillRect(position[0]-size[0]/2, position[1]-size[1]/2, size[0], size[1]);
 };

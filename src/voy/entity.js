@@ -43,10 +43,10 @@ Voy.Entity.prototype.hasTag = function(tag) {
 };
 
 Voy.Entity.prototype.notify = function() {
-  var arguments = Array.prototype.slice.call(arguments);
-  var type = arguments.shift();
+  var args = Array.prototype.slice.call(arguments);
+  var type = args.shift();
   this.components.forEach(function(component) {
-    if(component[type]) component[type].apply(component, arguments);
+    if(component[type]) component[type].apply(component, args);
   });
 };
 

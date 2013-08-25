@@ -23,7 +23,21 @@ Voy.Scene.prototype.registerComponents = function(entity) {
   }.bind(this));
 };
 
-Voy.Scene.prototype.exit = function() { };
+Voy.Scene.prototype.exit = function() {
+  this.children.forEach(function(child) {
+    this.deregisterComponents(child);
+  }.bind(this));
+};
+
+Voy.Scene.prototype.deregisterComponents = function(entity) {
+  entity.components.forEach(function(component) {
+    this.componentRegistry.remove(component);
+  }.bind(this));
+
+  entity.children.forEach(function(child) {
+    this.deregisterComponents(child);
+  }.bind(this));
+};
 
 Voy.Scene.prototype.getPosition = function() {
   return Voy.Vector2.zero();

@@ -2,6 +2,12 @@ Voy.Collision = function(entity0, entity1, separation) {
   this[0] = entity0;
   this[1] = entity1;
   this.separation = separation;
+
+  if(this.isPhysical()) {
+    this.normal = Voy.Vector2.normalize(this.separation);
+    this.velocityDifference = Voy.Vector2.subtract(this[0].rigidBody.velocity, this[1].rigidBody.velocity);
+    this.velocityAlongNormal = this.velocityDifference.getDotProduct(this.normal);
+  }
 };
 
 Voy.Collision.prototype.isPhysical = function() {
@@ -25,19 +31,15 @@ Voy.Collision.prototype.resolve = function() {
 
   this[0].localPosition.add(Voy.Vector2.multiply(this.separation, 1.001));
 
-  var normal = Voy.Vector2.normalize(this.separation);
-  var velocityDifference = Voy.Vector2.subtract(this[0].rigidBody.velocity, this[1].rigidBody.velocity);
-  var velocityAlongNormal = velocityDifference.getDotProduct(normal);
-
-  if(velocityAlongNormal > 0) return false;
+  if(this.velocityAlongNormal > 0) return false;
 
   var bounciness = Math.min(this[0].rigidBody.bounciness, this[1].rigidBody.bounciness);
 
-  var impulsePower = -velocityAlongNormal*(1+bounciness)*1.01;
+  var impulsePower = -this.velocityAlongNormal*(1+bounciness)*1.01;
 
   var noStatic = !this[0].rigidBody.static && !this[1].rigidBody.static;
   if(noStatic) impulsePower /= 1/this[0].rigidBody.mass + 1/this[1].rigidBody.mass;
-  var impulse = Voy.Vector2.multiply(normal, impulsePower);
+  var impulse = Voy.Vector2.multiply(this.normal, impulsePower);
 
   if(noStatic) {
     this[0].rigidBody.velocity.add(
