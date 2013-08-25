@@ -1,7 +1,9 @@
-Voy.Sprite = function(imageName) {
-  Voy.Component.call(this, 'layer');
+Voy.Sprite = function(imageName, position) {
+  this.position = position ? position : Voy.Vector2.zero();
+  Voy.Component.call(this, 'sprite');
   this.imageName = imageName;
-  this.flippedHorizontally = true;
+  this.flippedHorizontally = false;
+  this.opacity = 1;
 };
 
 Voy.Sprite.prototype = Object.create(Voy.Component.prototype);
@@ -13,8 +15,8 @@ Voy.Sprite.prototype.initialize = function() {
 };
 
 Voy.Sprite.prototype.draw = function(canvas) {
-  canvas.save();
   if(this.flippedHorizontally) canvas.flipHorizontally();
-  canvas.drawImage(Voy.Vector2.zero(), this.image);
-  canvas.restore();
+  if(this.opacity !== 1) canvas.setOpacity(this.opacity);
+  canvas.drawImage(this.position, this.image);
+  if(this.opacity !== 1) canvas.setOpacity(1);
 };

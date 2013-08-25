@@ -60,6 +60,10 @@ Voy.Canvas.prototype.save = function() {
   this.context.save();
 };
 
+Voy.Canvas.prototype.setOpacity = function(opacity) {
+  this.context.globalAlpha = opacity;
+};
+
 Voy.Canvas.prototype.restore = function() {
   this.context.restore();
 };
