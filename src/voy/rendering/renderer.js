@@ -22,7 +22,7 @@ Voy.Renderer.prototype.drawEntity = function(entity) {
   if(entity.localRotation) this.canvas.rotate(entity.localRotation);
 
   entity.components.forEach(function(component) {
-    if(component.draw) component.draw(this.canvas);
+    if(component.drawable) component.prepareAndDraw(this.canvas);
   }.bind(this));
   this.drawChildren(entity);
   this.canvas.restore();

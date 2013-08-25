@@ -36,7 +36,15 @@ Voy.Point.subtract = function(point1, point2) {
   return Voy.Vector2.subtract(point1, point2).toPoint();
 };
 
+Voy.Point.multiply = function(point1, point2) {
+  return Voy.Vector2.multiply(point1, point2).toPoint();
+};
+
 Voy.Point.createFromVector = function(vector) {
   var point = new Voy.Point(vector[0], vector[1]);
   return point;
+};
+
+Voy.Point.createFromArray = function(array) {
+  return new Voy.Point(array[0], array[1]);
 };

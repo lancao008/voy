@@ -4,6 +4,8 @@ Voy.Canvas = function() {
   this.context = this.element.getContext('2d');
 
   this.updateResolution(640, 480);
+  this.text = new Voy.TextCanvas(this.context);
+  this.savedAlphas = [];
 };
 
 Voy.Canvas.prototype.updateResolution = function(width, height) {
@@ -58,14 +60,16 @@ Voy.Canvas.prototype.flipHorizontally = function() {
 
 Voy.Canvas.prototype.save = function() {
   this.context.save();
+  this.savedAlphas.push(this.globalAlpha);
 };
 
-Voy.Canvas.prototype.setOpacity = function(opacity) {
-  this.context.globalAlpha = opacity;
+Voy.Canvas.prototype.applyOpacity = function(opacity) {
+  this.context.globalAlpha *= opacity;
 };
 
 Voy.Canvas.prototype.restore = function() {
   this.context.restore();
+  this.context.globalAlpha = this.savedAlphas.pop();
 };
 
 Voy.Canvas.prototype.rotate = function(angle) {

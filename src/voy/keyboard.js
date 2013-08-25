@@ -50,6 +50,9 @@
       if(keyName && this.keysPressed[keyName]) {
         delete this.keysPressed[keyName];
       }
+    },
+    anyKeysPressed: function() {
+      return Object.keys(this.keysPressed).length !== 0;
     }
   };
 

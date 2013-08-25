@@ -24,7 +24,7 @@ Voy.Game.prototype.run = function() {
 
 Voy.Game.prototype.tick = function(timestamp) {
   var timeDelta = this.lastTickAt ? timestamp - this.lastTickAt : 0;
-  this.update(timeDelta);
+  this.update(Math.round(timeDelta));
   this.lastTickAt = timestamp;
   this.scheduleNextTick();
 };
