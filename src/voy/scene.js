@@ -39,6 +39,6 @@ Voy.Scene.prototype.removeChild = function() {
 
 Voy.Scene.prototype.update = function(timeDelta) {
   this.children.forEach(function(child) {
-    child.update();
+    child.update(timeDelta);
   });
 };
