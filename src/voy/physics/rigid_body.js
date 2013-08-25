@@ -29,6 +29,8 @@ Voy.RigidBody.prototype.simulate = function(timeDelta) {
   this.getLocalPosition().add(
     Voy.Vector2.multiply(this.velocity, timeDelta)
   );
+};
 
-  this.force = Voy.Vector2.zero();
+Voy.RigidBody.prototype.resetForce = function() {
+  this.force.reset();
 };

@@ -32,6 +32,7 @@ Voy.Game.prototype.update = function(timeDelta) {
   this.scene.update(timeDelta);
   this.physics.update(timeDelta);
   this.renderer.render(this.scene);
+  this.physics.resetForces();
 };
 
 Voy.Game.prototype.scheduleNextTick = function() {

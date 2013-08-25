@@ -40,3 +40,9 @@ Voy.PhysicsEngine.prototype.handleCollisions = function() {
     collision.notify();
   });
 };
+
+Voy.PhysicsEngine.prototype.resetForces = function() {
+  this.bodies.forEach(function(body) {
+    body.resetForce();
+  }.bind(this));
+};
