@@ -32,6 +32,10 @@ Voy.Point.zero = function() {
   return Voy.Point.createFromVector(vector);
 };
 
+Voy.Point.subtract = function(point1, point2) {
+  return Voy.Vector2.subtract(point1, point2).toPoint();
+};
+
 Voy.Point.createFromVector = function(vector) {
   var point = new Voy.Point(vector[0], vector[1]);
   return point;
