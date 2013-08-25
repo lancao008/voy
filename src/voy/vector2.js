@@ -74,6 +74,24 @@ Voy.Vector2.prototype.getLength = function() {
   return Math.sqrt(this.getLengthSquared());
 };
 
+Voy.Vector2.prototype.reset = function() {
+  this[0] = 0;
+  this[1] = 0;
+};
+
+Voy.Vector2.prototype.round = function() {
+  this[0] = Math.round(this[0]);
+  this[1] = Math.round(this[1]);
+};
+
+Voy.Vector2.prototype.toArray = function() {
+  return [this[0], this[1]];
+};
+
+Voy.Vector2.prototype.isZero = function() {
+  return this[0] === 0 && this[1] === 0;
+}
+
 Voy.Vector2.prototype.getLengthSquared = function() {
   return Math.pow(this[0], 2) + Math.pow(this[1], 2);
 };
