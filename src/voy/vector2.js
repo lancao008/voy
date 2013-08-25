@@ -88,6 +88,10 @@ Voy.Vector2.prototype.toArray = function() {
   return [this[0], this[1]];
 };
 
+Voy.Vector2.prototype.getCrossProduct = function(vector) {
+  return this[0]*vector[1]-this[1]*vector[0];
+};
+
 Voy.Vector2.prototype.isZero = function() {
   return this[0] === 0 && this[1] === 0;
 }
