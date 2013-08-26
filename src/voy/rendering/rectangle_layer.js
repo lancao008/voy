@@ -1,4 +1,4 @@
-Voy.RectangleLayer = function(color, size) {
+Voy.RectangleLayer = function(size, color) {
   Voy.Layer.call(this, 'rectangleLayer');
   this.color = color;
   this.size = size;

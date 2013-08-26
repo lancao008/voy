@@ -10,6 +10,11 @@ Voy.Collision = function(entity0, entity1, separation) {
   }
 };
 
+Voy.Collision.prototype.getOther = function(entity) {
+  var index = entity == this[0] ? 1 : 0;
+  return this[index];
+};
+
 Voy.Collision.prototype.isPhysical = function() {
   return !!this[0].rigidBody && !!this[1].rigidBody;
 };

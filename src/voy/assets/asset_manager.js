@@ -1,7 +1,7 @@
 Voy.AssetManager = function() {
   this.setupLoader('images', new Voy.ImageLoader());
   this.setupLoader('texts', new Voy.TextLoader());
-//  this.setupLoader('sounds', Voy.SoundLoader);
+  this.setupLoader('sounds', new Voy.SoundLoader());
   this.activeLoadersCount = 0;
 };
 

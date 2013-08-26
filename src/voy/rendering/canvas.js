@@ -50,7 +50,8 @@ Voy.Canvas.prototype.drawPolygon = function(points, color) {
   this.context.fill();
 };
 
-Voy.Canvas.prototype.drawImage = function(position, image) {
+Voy.Canvas.prototype.drawImage = function(image, position) {
+  if(!position) position = Voy.Point.zero();
   this.context.drawImage(image, position[0]-image.width/2, position[1]-image.height/2);
 };
 
